@@ -1,0 +1,21 @@
+.Register {
+    text-align: center;    
+}
+
+.form {
+    text-align: start;
+    padding-left: 20px;    
+}
+
+.nome {
+    padding-right: 80px;
+}
+
+.descricao {
+    padding-right: 80px;    
+}
+
+.button {
+    background-color: green;
+    color: aliceblue;
+}
