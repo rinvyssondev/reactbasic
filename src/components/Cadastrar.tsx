@@ -56,13 +56,14 @@ const Register = () => {
         ></input>
         <br />
         <br />
-        <label htmlFor='register'>Disponível para compra</label>
-        <select name="sale" id="sale" onChange={(e)=> setAvailableSale(e.target.value)} >
+        <label className='label' htmlFor='register'>Disponível para compra</label>        
+        <select name="sale" id="sale" onChange={(e)=> setAvailableSale(e.target.value)} >          
           <option value='1'>Sim</option>
           <option value='0'>Não</option>
         </select>
-        <br />
+        <br />                
         <button className='button' type='submit' onClick={submit}>Cadastrar</button>
+        
       </form>
 
     </div>

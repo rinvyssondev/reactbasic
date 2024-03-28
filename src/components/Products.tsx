@@ -35,17 +35,15 @@ export default function Products(){
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr className="Alinhamento">                                        
-                                            <td>
-                                            {products.map((p) => <tr>{p.Name}</tr> )}                                                                                                                                                                                        
-                                            </td>          
-                                            <td>                                        
-                                                {products.map((p)=> <tr>{p.Value}</tr>)}
-                                            </td>                                                                    
-                                        </tr>                                                                          
+                                    {products.map((p) => 
+                                    <tr>
+                                        <td>{p.Name}</td> 
+                                        <td>{p.Value}</td>
+                                    </tr> 
+                                    )}                                                                                                            
                                     </tbody>
                                 </Table>                                                                                                          
-                    <button className="btn" onClick={check}>Novo produto</button>            
+                    <button className="btn-products" onClick={check}>Novo produto</button>            
             </div>) : <h1></h1>
              )
                    
