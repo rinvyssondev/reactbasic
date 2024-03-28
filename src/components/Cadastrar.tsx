@@ -15,7 +15,7 @@ const Register = () => {
 
   const submit = async () => {    
     try {
-      await fetch("http://192.168.0.13:8080/products", {
+      await fetch("http://0.0.0.0:8080/products", {
         method: "POST",
         body: JSON.stringify({
           Name,

@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
-import api from "../api";
+import { useNavigate } from "react-router-dom";
 import Table from 'react-bootstrap/Table'
-import { Button } from "react-bootstrap";
-import { Container } from "react-bootstrap";
+import api from "../api";
+import './Products.css'
 
 export default function Products(){
-    const [products, setProducts] = useState([]);
+    const [products, setProducts] = useState<any[]>([]);
+
     const getProducts = async () => {        
-        await fetch("http://192.168.0.13:8080/products")                            
+       await api.get("/products").then((response)=> setProducts(response.data));
     };
 
     const navigate = useNavigate();
@@ -23,50 +23,31 @@ export default function Products(){
         getProducts();
     }, []);
 
-    console.log(products)
-    
-        return (
-            <div>
-      {products ? (
-        products.map((product) => (            
-          <Container>            
-            <h2>Listagem de Produtos</h2>
-            <Table>
-                <thead>                 
-                    <tr>
-                        <th>Nome</th>
-                        <th>Valor</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>{product.Name}</td>
-                    </tr>
-                </tbody>
-            </Table>
-        </Container>
-        ))
-      ) : (        
-        <div>            
-            <h2>Listagem de Produtos</h2>
-            <Table bordered>
-                <thead>
-                    <tr>
-                        <th>Nome</th>
-                        <th>Valor</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td></td>
-                    </tr>
-                </tbody>
-            </Table>
-        </div>
-      )}
-    </div>      
-            
-        )
-
-    }
+    return (     
+                products ? (             
+                <div className="App">            
+                <h2>Listagem de produtos</h2>                                                                  
+                                <Table bordered striped responsive>                                    
+                                    <thead>
+                                        <tr>                                        
+                                            <th>Nome</th>
+                                            <th>Valor</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr className="Alinhamento">                                        
+                                            <td>
+                                            {products.map((p) => <tr>{p.Name}</tr> )}                                                                                                                                                                                        
+                                            </td>          
+                                            <td>                                        
+                                                {products.map((p)=> <tr>{p.Value}</tr>)}
+                                            </td>                                                                    
+                                        </tr>                                                                          
+                                    </tbody>
+                                </Table>                                                                                                          
+                    <button className="btn" onClick={check}>Novo produto</button>            
+            </div>) : <h1></h1>
+             )
+                   
+     }        
 
